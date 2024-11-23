@@ -9,6 +9,7 @@ namespace RPG
 {
     class GameManager
     {
+        private int mapNumber = 1;
         Map map = new Map();
 
 
@@ -17,6 +18,14 @@ namespace RPG
             while (true)
             {
                 DelayerTime();
+                MapRendering();
+            }
+        }
+
+        public void MapRendering()
+        {
+            if (mapNumber % 1 == 0)
+            {
                 Console.SetCursorPosition(0, 0);
                 for (int i = 0; i < map._map1.GetLength(0); i++)
                 {
@@ -26,8 +35,9 @@ namespace RPG
                     }
                     Console.WriteLine();
                 }
-
-                DelayerTime();
+            }
+            else if (mapNumber % 2 == 0)
+            {
                 Console.SetCursorPosition(0, 0);
                 for (int i = 0; i < map._map2.GetLength(0); i++)
                 {
@@ -37,7 +47,9 @@ namespace RPG
                     }
                     Console.WriteLine();
                 }
-                DelayerTime();
+            }
+            else if (mapNumber % 3 == 0)
+            {
                 Console.SetCursorPosition(0, 0);
                 for (int i = 0; i < map._map3.GetLength(0); i++)
                 {
@@ -47,7 +59,9 @@ namespace RPG
                     }
                     Console.WriteLine();
                 }
-                DelayerTime();
+            }
+            else if (mapNumber % 4 == 0)
+            {
                 Console.SetCursorPosition(0, 0);
                 for (int i = 0; i < map._map4.GetLength(0); i++)
                 {
@@ -58,6 +72,8 @@ namespace RPG
                     Console.WriteLine();
                 }
             }
+
+            mapNumber++;
         }
 
         public void DelayerTime()
