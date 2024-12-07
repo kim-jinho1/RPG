@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace RPG
 {
     class GameManager
     {
         private int mapNumber = 1;
-        Map map = new Map();
-
+        private Map map = new Map();
 
         public void Update()
         {
@@ -24,54 +19,22 @@ namespace RPG
 
         public void MapRendering()
         {
-            if (mapNumber % 1 == 0)
+            Console.SetCursorPosition(0, 0);
+
+            // 모든 맵을 배열로 관리
+            string[][,] maps = { map._map1, map._map2, map._map3, map._map4 };
+
+            // mapNumber에 따른 현재 맵 선택 (0부터 시작하는 인덱스 기반)
+            string[,] currentMap = maps[(mapNumber - 1) % maps.Length];
+
+            for (int i = 0; i < currentMap.GetLength(0); i++)
             {
-                Console.SetCursorPosition(0, 0);
-                for (int i = 0; i < map._map1.GetLength(0); i++)
+                for (int j = 0; j < currentMap.GetLength(1); j++)
                 {
-                    for (int j = 0; j < map._map1.GetLength(1); j++)
-                    {
-                        Console.Write(map._map1[i, j]);
-                    }
-                    Console.WriteLine();
+                    Console.Write(currentMap[i, j]);
                 }
-            }
-            else if (mapNumber % 2 == 0)
-            {
-                Console.SetCursorPosition(0, 0);
-                for (int i = 0; i < map._map2.GetLength(0); i++)
-                {
-                    for (int j = 0; j < map._map2.GetLength(1); j++)
-                    {
-                        Console.Write(map._map2[i, j]);
-                    }
-                    Console.WriteLine();
-                }
-            }
-            else if (mapNumber % 3 == 0)
-            {
-                Console.SetCursorPosition(0, 0);
-                for (int i = 0; i < map._map3.GetLength(0); i++)
-                {
-                    for (int j = 0; j < map._map3.GetLength(1); j++)
-                    {
-                        Console.Write(map._map3[i, j]);
-                    }
-                    Console.WriteLine();
-                }
-            }
-            else if (mapNumber % 4 == 0)
-            {
-                Console.SetCursorPosition(0, 0);
-                for (int i = 0; i < map._map4.GetLength(0); i++)
-                {
-                    for (int j = 0; j < map._map4.GetLength(1); j++)
-                    {
-                        Console.Write(map._map4[i, j]);
-                    }
-                    Console.WriteLine();
-                }
-            }
+                Console.WriteLine();
+            }   
 
             mapNumber++;
         }
