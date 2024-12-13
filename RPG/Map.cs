@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPG
 {
+    ///<summary>케임의 맵을 담당하는 클래스</summary>
     class Map
     {
         public string[,] _map1 =

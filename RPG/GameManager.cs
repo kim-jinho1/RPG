@@ -3,11 +3,14 @@ using System.Threading;
 
 namespace RPG
 {
+    ///<summary>게임의 전체적인 걸 담당하는 클래스</summary>
     class GameManager
     {
         private int mapNumber = 1;
         private Map map = new Map();
 
+
+        ///<summary>게임 화면을 업데이트함</summary>
         public void Update()
         {
             while (true)
@@ -16,7 +19,7 @@ namespace RPG
                 MapRendering();
             }
         }
-
+        ///<summary>맵 랜더링</summary>
         public void MapRendering()
         {
             Console.SetCursorPosition(0, 0);
@@ -38,7 +41,7 @@ namespace RPG
 
             mapNumber++;
         }
-
+        ///<summary>랜더링 딜래이</summary>
         public void DelayerTime()
         {
             Thread.Sleep(2000);

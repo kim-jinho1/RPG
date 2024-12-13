@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace RPG
 {
+    ///<summary>게임의 시작을 다루는 클래스</summary>
     class Program
     {
         static GameManager _gameManager = new GameManager();
